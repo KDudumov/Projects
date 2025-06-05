@@ -1,0 +1,24 @@
+name: Update profile
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - run: python scripts/update_profile.py
+      - name: Commit changes
+        run: |
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@github.com'
+          git add PROFILE.md
+          git commit -m 'Update profile' || echo 'Nothing to commit'
+      - name: Push changes
+        run: git push
