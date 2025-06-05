@@ -18,3 +18,14 @@ Did you enjoy this practical style of learning? There's no better way to learn t
 
 Let's keep the momentum going! Head over to [GitHub Skills](https://skills.github.com) catalog to find another hands-on exercise. :rocket:
 
+
+### Automated profile updates
+
+Run `scripts/update_profile.py` locally to refresh `PROFILE.md` using messages from `prompts.txt`:
+
+```bash
+python scripts/update_profile.py
+```
+
+A scheduled GitHub Actions workflow (`update-profile.yml`) runs this script daily. Edit `prompts.txt` to customize the messages that get posted.
+
